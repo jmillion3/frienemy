@@ -7,8 +7,8 @@ const session = require('express-session');
 // * import variables
 const app = express();
 const {SESSION_SECRET, SERVER_PORT, CONNECTION_STRING} = process.env
-// const auth = require('./controllers/userController');
-// const rank = require('./controller/rankController');
+const auth = require('./controllers/userController');
+// const rank = require('./controllers/rankController');
 
 // * top level middleware
 app.use(express.json())
@@ -34,13 +34,14 @@ massive({
 
 // * Endpoints
 // auth
-// app.post(`/auth/register`, auth.emailMiddleware, auth.register);
-// app.post(`/auth/login`, auth.login);
-// app.post(`/auth/logout`, auth.logout);
-// app.get(`/auth/user`, auth.getUserSession);
-// rank
-// app.post(`/rank`, auth.emailMiddleware, rank.createRank);
+app.post(`/auth/register`, auth.register);
+app.post(`/auth/login`, auth.login);
+app.post(`/auth/logout`, auth.logout);
+app.get(`/auth/user`, auth.getUserSession);
+// friend
+// app.post(`/friend?username=`, auth.emailMiddleware, rank.createRank);
 // app.put('/rank', rank.updateRank);
 
 // * nodemon listens for changes
 app.listen(SERVER_PORT, () => console.log(`It's over ${SERVER_PORT}!`))
+

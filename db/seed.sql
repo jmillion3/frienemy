@@ -4,17 +4,23 @@ CREATE TABLE users
     email VARCHAR(100) NOT NULL,
     username VARCHAR(50) NOT NULL,
     password VARCHAR(300) NOT NULL,
-    firstName VARCHAR (50) NOT NULL,  
-    lastName VARCHAR (50) NOT NULL,
+    first_name VARCHAR (50) NOT NULL,  
+    last_name VARCHAR (50) NOT NULL,
     phone INT,
     profile_pic TEXT
 );
 
-CREATE TABLE ranker
-(
-    ranker_id SERIAL PRIMARY KEY,
-    score INT NOT NULL,
-    user_id REFERENCES user(user_id)
+CREATE TABLE user_friends(
+  user_friends_id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(user_id),
+  friend_id INT REFERENCES users(user_id)
+);
+
+CREATE TABLE scores(
+  score_id SERIAL PRIMARY KEY,
+  score INT,
+  user_id INT REFERENCES users(user_id),
+  friend_id INT REFERENCES users(user_id)
 );
 
 -- CREATE TABLE comments
