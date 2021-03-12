@@ -1,0 +1,29 @@
+.profile {
+  background: rgba(255, 0, 0, 0.377);
+  height: 80vh;
+  width: 99vw;
+}
+
+.friends {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+img {
+  margin: 10px;
+  height: 200px;
+  width: 200px;
+}
+
+h2 {
+  height: 50px;
+  width: 300px;
+}
+/*# sourceMappingURL=Profile.css.map */

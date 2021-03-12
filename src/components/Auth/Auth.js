@@ -1,94 +1,144 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {loginUser} from '../../redux/userReducer';
+import axios from 'axios';
+import Logo from './theaterIcon.png';
+import './Auth.css';
 
-const Auth = () => {
-    return <div>
-        This is an Auth Component
-    </div>
+class Auth extends Component {
+    constructor(){
+        super();
+        this.state = {
+            email: '',
+            username: '',
+            password: '',
+            firstName: '',
+            lastName: '',
+            phone: '',
+            profilePic: '',
+            newUser: false
+        }
+    }
+
+    login = async (e) => {
+        e.preventDefault();
+        const {username, password} = this.state;
+        try {
+            const user = await axios.post('/auth/login', {username, password})
+            this.props.loginUser(user.data)
+            this.props.history.push('/profile/main')
+        } 
+        catch {
+            alert('failed login attempt')
+        }
+    }
+
+    register = async (e) => {
+        e.preventDefault();
+        const {email, username, password, firstName, lastName, phone, profilePic} = this.state;
+        try {
+            const user = await axios.post('/auth/register', {email, username, password, firstName, lastName, phone, profilePic})
+            this.props.loginUser(user.data);
+            this.props.history.push('/profile/main')
+        }
+        catch {
+            alert('failed register attempt')
+        }
+    }
+
+    toggleNewUser = () => {
+        this.setState({
+            newUser: !this.state.newUser
+        })
+    }
+
+    changeHandler = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    render(){
+        return <div className="auth">
+            {!this.state.newUser ?
+            <form onSubmit={this.login}>
+                <img src={Logo} alt="web logo"/>
+                <h1>FRIENEMY</h1>
+                <input 
+                type='text'
+                placeholder='username'
+                name='username'
+                value={this.state.username}
+                onChange={this.changeHandler}/>
+                <input 
+                type='password'
+                placeholder='password'
+                name='password'
+                value={this.state.password}
+                onChange={this.changeHandler}/>
+                <input
+                className="button"
+                type="submit"
+                value="Login"/>
+                <button
+                className="button" 
+                onClick={this.toggleNewUser}>Register</button>
+            </form>
+            :
+            <form onSubmit={this.register}>
+                <h2>REGISTER</h2>
+                <input 
+                type='email'
+                placeholder='email*'
+                name='email'
+                value={this.state.email}
+                onChange={this.changeHandler}/>
+                <input 
+                type='text'
+                placeholder='username*'
+                name='username'
+                value={this.state.username}
+                onChange={this.changeHandler}/>
+                <input 
+                type='password'
+                placeholder='password*'
+                name='password'
+                value={this.state.password}
+                onChange={this.changeHandler}/>
+                <input 
+                type='text'
+                placeholder='First Name*'
+                name='firstName'
+                value={this.state.firstName}
+                onChange={this.changeHandler}/>
+                <input 
+                type='text'
+                placeholder='Last Name*'
+                name='lastName'
+                value={this.state.lastName}
+                onChange={this.changeHandler}/>
+                <input 
+                type='tel'
+                placeholder='phone'
+                name='phone'
+                value={this.state.phone}
+                onChange={this.changeHandler}/>
+                <input 
+                type='text'
+                placeholder='Picture'
+                name='profilePic'
+                value={this.state.profilePic}
+                onChange={this.changeHandler}/>
+                <input
+                type="submit"
+                value="Register"/>
+                <button onClick={this.toggleNewUser}>Return to Login</button>
+            </form>
+    }
+        </div>
+    }
 }
 
-export default Auth;
+const mapStateToProps = state => state
 
-// import React, { Component } from 'react';
-// import axios from 'axios';
-// import './Auth.css';
-// import {connect} from 'react-redux';
-// import updateUser from '../../redux/reducer';
-
-// class Auth extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       username: '',
-//       password: '',
-//       errorMsg: ''
-//     }
-//     this.login = this.login.bind(this);
-//     this.register = this.register.bind(this);
-//   }
-
-//   handleChange(prop, val) {
-//     this.setState({
-//       [prop]: val
-//     })
-//   }
-
-//   login() {
-//     axios.post('/api/auth/login', this.state)
-//       .then(res => {
-//         //code here
-//         this.props.updateUser(res.data);
-//         this.props.history.push('/dash');
-//       })
-//       .catch(err => {
-//         console.log(err)
-//         this.setState({errorMsg: 'Incorrect username or password!'})
-//       })
-//   }
-
-//   register() {
-//     axios.post('/api/auth/register', this.state)
-//       .then(res => {
-//         //code here
-//         this.props.updateUser(res.data);
-//         this.props.history.push('/dash');
-//       })
-//       .catch(err => {
-//         console.log(err)
-//         this.setState({errorMsg: 'Username taken!'})
-//       })
-//   }
-
-//   closeErrorMessage = () => {
-//     this.setState({
-//       errorMsg: false, 
-//       username: '', 
-//       password: ''
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <div className='auth'>
-//         <div className='auth-container'>
-//           <img src={logo} alt='logo' />
-//           <h1 className='auth-title'>Helo</h1>
-//           {this.state.errorMsg && <h3 className='auth-error-msg'>{this.state.errorMsg} <span onClick={this.closeErrorMessage}>X</span></h3>}
-//           <div className='auth-input-box'>
-//             <p>Username:</p>
-//             <input value={this.state.username} onChange={e => this.handleChange('username', e.target.value)} />
-//           </div>
-//           <div className='auth-input-box'>
-//             <p>Password:</p>
-//             <input value={this.state.password} type='password' onChange={e => this.handleChange('password', e.target.value)} />
-//           </div>
-//           <div className='auth-button-container'>
-//             <button className='dark-button' onClick={this.login}> Login </button>
-//             <button className='dark-button' onClick={this.register}> Register </button>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default connect(null, {updateUser})(Auth);
+export default connect(mapStateToProps, {loginUser})(Auth);

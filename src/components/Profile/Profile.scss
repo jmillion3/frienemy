@@ -1,0 +1,22 @@
+.profile {
+	background: rgba(255, 0, 0, 0.377);
+	height: 80vh;
+	width: 99vw;
+}
+
+.friends {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+img {
+	margin: 10px;
+	height: 200px;
+	width: 200px;
+}
+
+h2 {
+	height: 50px;
+	width: 300px;
+}

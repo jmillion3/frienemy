@@ -1,0 +1,33 @@
+.auth {
+	height: 80vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	height: 50vh;
+	width: 50vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* align-items: center; */
+}
+
+form h1 {
+	font-size: 50px;
+}
+
+input {
+	margin: 10px;
+}
+
+.auth .button {
+	width: 10vw;
+}
+
+img {
+	height: 294px;
+	width: 331px;
+}
