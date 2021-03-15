@@ -1,7 +1,16 @@
 .profile {
-  background: rgba(255, 0, 0, 0.377);
   height: 80vh;
   width: 99vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .friends {
@@ -14,16 +23,37 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 img {
   margin: 10px;
-  height: 200px;
-  width: 200px;
+  height: 350px;
+  width: 350px;
 }
 
 h2 {
   height: 50px;
   width: 300px;
+}
+
+li {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 800px) {
+  img {
+    height: 280px;
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  /* Styles will only be applied when view port width is 500px and lower */
+  img {
+    height: 200px;
+    width: 200px;
+  }
 }
 /*# sourceMappingURL=Profile.css.map */

@@ -1,0 +1,58 @@
+.form {
+  height: 90vh;
+  width: 100vw;
+  background: rgba(98, 98, 98, 0.356);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form {
+  height: 10vh;
+  width: 100vw;
+}
+
+li {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+span {
+  margin: 10px;
+}
+
+input[type='radio'] {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+}
+
+.submitBtn {
+  width: 100px;
+  vertical-align: middle;
+}
+
+input[type=submit] {
+  width: 80%;
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #3f3f3f;
+}
+/*# sourceMappingURL=Score.css.map */

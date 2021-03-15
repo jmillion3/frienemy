@@ -41,12 +41,13 @@ massive({
 app.post(`/auth/register`, userCtrl.register);
 app.post(`/auth/login`, userCtrl.login);
 app.post(`/auth/logout`, userCtrl.logout);
-app.get(`/auth/user`, userCtrl.getUserSession);
+app.get(`/auth/user`, userCtrl.getUser);
 // profile
 app.get('/profile/main', profileCtrl.readFriends)
 app.get(`/profile/:username`, profileCtrl.readUser)
 // friend
-app.get('/friend/score', friendCtrl.getScore)
+app.get('/friend/score', friendCtrl.getScores)
+app.post('/friend/score', friendCtrl.addScore)
 // app.post(`/friend/?first=${}?last=${}`, auth.emailMiddleware, rank.createRank);
 
 

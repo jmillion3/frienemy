@@ -1,3 +1,3 @@
-SELECT * FROM users
-JOIN score
+SELECT * FROM score
+JOIN users
 ON scores.user_id = users.user_id;

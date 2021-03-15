@@ -36,7 +36,8 @@ module.exports = {
             req.session.user = {
                 userId: foundUser.user_id,
                 username: foundUser.username,
-                email: foundUser.email
+                email: foundUser.email,
+                profilePic: foundUser.profile_pic
             }
             res.status(200).send(req.session.user)
         } else {
@@ -47,7 +48,7 @@ module.exports = {
         req.session.destroy();
         res.sendStatus(200);
     },
-    getUserSession: (req, res) => {
+    getUser: (req, res) => {
         if(req.session.user){
             res.status(200).send(req.session.user);
         } else {

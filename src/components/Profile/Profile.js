@@ -19,16 +19,19 @@ const Profile = () => {
     return (
         <div className="profile">
           {friendsList.map((user) => {
-            //   console.log(user)
+              // console.log(user)
             return (
-            //   <Link to={`/friend/:${id}`}>
-                <div key={user.username} className="friends">
-                    <img src={user.profile_pic} alt="userImg"/>
-                    <h2>{`${user.first_name} ${user.last_name}`}</h2>
-                </div>
+            //   <Link to={`/friend/username`}>
+                  <li key={user.username} className="friends">
+                    <div>
+                      {/* <p>{`${user.username}`}</p> */}
+                      <img src={user.profile_pic} alt="userImg"/>
+                      <h2>{`${user.first_name} ${user.last_name}`}</h2>
+                    </div>
+                  </li>
             //   </Link>
             )
-          })};
+          })}
           
         </div>
       )
