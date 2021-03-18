@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 // import List from '../List/List';
 import './Profile.css'
 
@@ -19,17 +19,17 @@ const Profile = () => {
     return (
         <div className="profile">
           {friendsList.map((user) => {
-              // console.log(user)
+              console.log(user)
             return (
-            //   <Link to={`/friend/username`}>
                   <li key={user.username} className="friends">
                     <div>
                       {/* <p>{`${user.username}`}</p> */}
+                    <Link to="/friend/score">
                       <img src={user.profile_pic} alt="userImg"/>
-                      <h2>{`${user.first_name} ${user.last_name}`}</h2>
+                    </Link>
+                      <h3>{`${user.first_name} ${user.last_name}`}</h3>
                     </div>
                   </li>
-            //   </Link>
             )
           })}
           

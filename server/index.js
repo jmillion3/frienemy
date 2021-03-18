@@ -47,7 +47,7 @@ app.get('/profile/main', profileCtrl.readFriends)
 app.get(`/profile/:username`, profileCtrl.readUser)
 // friend
 app.get('/friend/score', friendCtrl.getScores)
-app.post('/friend/score', friendCtrl.addScore)
+// app.post('/friend/score/:id', friendCtrl.addScore)
 // app.post(`/friend/?first=${}?last=${}`, auth.emailMiddleware, rank.createRank);
 
 

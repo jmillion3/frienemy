@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getUser, logoutUser} from '../../redux/userReducer';
+import Search from '../Search/Search';
 // import {logoutUser} from '../../redux/userReducer'
 import './Header.css';
 
@@ -11,7 +12,8 @@ class Header extends Component {
         super();
         this.state = {
             isLoggedIn: true
-        }
+        };
+        this.search = this.search.bind( this )
     }
 
     componentDidMount(){
@@ -26,16 +28,29 @@ class Header extends Component {
         });
     }
 
+    search( str ) {
+        let filter = ''
+        if(str !== ''){
+          filter = `profile/main}`
+        }
+        axios.get(`http://localhost:4000/${ filter }`).then(results => {
+          this.setState({ users: results.data })
+        })
+      }
+
     render(){
     return <div>
         {this.props.isLoggedIn ? 
         <div className="header">
-            <div className="user">
-                <img alt="user" src={this.props.user.profilePic}/>
-                <h1 className="welcome">Welcome, {this.props.user.username} </h1>
-            </div>
-            <div>
-                <Link to="/">Change Account</Link>
+            <Link to="/profile/main">
+                <div className="user">
+                    <img alt="user" src={this.props.user.profilePic}/>
+                    <h1 className="welcome">Welcome, {this.props.user.username} </h1>
+                </div>
+            </Link>
+            <div className="headerBtns">
+                {/* <Link to="/">Change Account</Link> */}
+                <Search search={ this.props.search } />
                 <button onClick={this.logout}>Logout</button>
             </div>
         </div>

@@ -1,7 +1,7 @@
 .header {
 	font-family: Arial, Helvetica, sans-serif;
 
-	height: 10vh;
+	height: 13vh;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -20,6 +20,11 @@
 	height: 100px;
 	width: 100px;
 	margin: 20px;
+}
+
+.headerBtns {
+	display: flex;
+	align-items: center;
 }
 
 .user {

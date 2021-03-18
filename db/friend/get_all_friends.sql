@@ -5,5 +5,5 @@
 
 -- SELECT * FROM user_friends;
 
-SELECT username, first_name, last_name, profile_pic 
+SELECT user_id, username, first_name, last_name, profile_pic 
 FROM users;

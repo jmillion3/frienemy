@@ -1,6 +1,6 @@
 .header {
   font-family: Arial, Helvetica, sans-serif;
-  height: 10vh;
+  height: 13vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,6 +24,15 @@
   height: 100px;
   width: 100px;
   margin: 20px;
+}
+
+.headerBtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .user {

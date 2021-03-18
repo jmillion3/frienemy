@@ -6,12 +6,13 @@ module.exports = {
     },
     addScore: async (req, res) => {
         const db = req.app.get('db');
-        const {score} = req.body;
+        const {score} = req.params;
 
         const firstScore = await db.score.add_score(score);
 
         return res.status(200).send(firstScore);
     }
+
     // getScore: async (req, res) => {
     //     const db = req.app.get('db');
     //     const {score} = req.body;

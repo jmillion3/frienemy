@@ -1,22 +1,35 @@
-.form {
+.survey {
 	height: 90vh;
 	width: 100vw;
-	background: rgba(98, 98, 98, 0.356);
+}
 
+.form {
+	height: 80vh;
+	width: 100vw;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: center;
 }
 
-form {
-	height: 10vh;
+ul {
+	height: 8vh;
 	width: 100vw;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	padding: 0;
+	margin: 0;
 }
 
 li {
 	font-size: 30px;
 	font-weight: 900;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 span {
@@ -47,4 +60,37 @@ input[type=submit] {
 
 input[type=submit]:hover {
 	background-color: #3f3f3f;
+}
+
+@media screen and(max-width: 800px) {
+	input[type='radio'] {
+		height: 15px;
+		width: 15px;
+		vertical-align: middle;
+	}
+
+	li {
+		font-size: 20px;
+		font-weight: 900;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+}
+
+@media screen and(max-width: 650px) {
+	/* Styles will only be applied when view port width is 650px and lower */
+	li {
+		font-size: 15px;
+		font-weight: 900;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+
+	input[type='radio'] {
+		height: 10px;
+		width: 10px;
+		vertical-align: middle;
+	}
 }
